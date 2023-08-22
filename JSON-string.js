@@ -6,16 +6,16 @@ var jsonStringify = function (object) {
   } else if (
     typeof object === "number" ||
     typeof object === "boolean" ||
-    obj === null
+    object === null
   ) {
     return String(object);
   } else if (Array.isArray(object)) {
     const elements = object.map((ele) => jsonStringify(ele));
-    return "[" + elements.join(",") + "]";
+    return `[${elements.join(",")}]`;
   } else if (typeof object === "object") {
     const keys = Object.keys(object);
     const pairs = keys.map((key) => `"${key}":${jsonStringify(object[key])}`);
-    return "{" + pairs.join(",") + "}";
+    return `{${pairs.join(",")}}`;
   } else {
     return "";
   }
